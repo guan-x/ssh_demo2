@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.multipart.maxSize" value="67108864" /><!-- 1024*1024*64 -->
+	
+	<package name="checkIsLogin-default" extends="struts-default">
+
+		<interceptors>
+			<!-- 声明拦截器 -->
+			<interceptor name="checkIsLogin"
+				class="com.gx.interceptor.AuthorityInterceptor"></interceptor>
+			<!-- 申明拦截器栈 -->
+			<interceptor-stack name="checkIsLoginStack">
+				<interceptor-ref name="checkIsLogin" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<!-- 默认本包中所有action都要经过userLoginCheckStack这个拦截器栈 -->
+		<default-interceptor-ref name="checkIsLoginStack"></default-interceptor-ref>
+
+	<!-- 	全局配置result -->
+		<global-results>
+			<result name="login" type="redirectAction">
+				<param name="actionName">loginAndLogoutAction_login</param>
+				<param name="namespace">/</param>
+			</result>
+			<!-- <result name="login" type="redirectAction">
+				loginAndLogoutAction_login
+			</result> -->
+			<result name="error">/error.jsp</result>
+			
+			<result name="exception">
+				/error.jsp
+			</result>
+		</global-results>
+		
+		<global-exception-mappings><!-- 出 异常 会跳转 到指定的页面 -->
+			<exception-mapping result="exception" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+
+	</package>
+	<!-- <constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.multipart.saveDir" value="/tmp" />
+
+	<package name="userLoginCheck" extends="struts-default">
+
+		<interceptors>
+			声明拦截器
+			<interceptor name="checkPrivile"
+				class="com.interceptor.CheckPrivilegeInterceptor"></interceptor>
+			申明拦截器栈
+			<interceptor-stack name="userLoginCheckStack">
+				<interceptor-ref name="checkPrivile" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		默认本包中所有action都要经过userLoginCheckStack这个拦截器栈
+		<default-interceptor-ref name="userLoginCheckStack"></default-interceptor-ref>
+
+		全局配置result
+		<global-results>
+			<result name="loginUI">/WEB-INF/native/login.jsp</result>
+			<result name="privilegeError">/privilegeError.jsp</result>还没写
+		</global-results>
+
+	</package>
+
+	<include file="struts/userlogin_struts.xml"></include>
+	<include file="struts/loginlogout_struts.xml"></include>
+
+	<include file="struts/native_struts.xml"></include>
+	<include file="struts/copyright_struts.xml"></include>
+	<include file="struts/admin_struts.xml"></include>
+	<include file="struts/agent_struts.xml"></include>
+	<include file="struts/enterprise_struts.xml"></include>
+
+	<include file="struts/front_struts.xml"></include>
+
+
+	<include file="struts/admin/news_notices.xml"></include>
+	<include file="struts/admin/userManager_struts.xml"></include>
+	<include file="struts/admin/admin_base_struts.xml"></include>
+	<include file="struts/admin/protocolResource_struts.xml"></include>
+	<include file="struts/admin/usinghelp_struts.xml"></include>
+	<include file="struts/brand_struts.xml"></include> -->
+	
+	<!-- <include file="struts/user.xml"></include>
+	<include file="struts/personalfile.xml"></include>
+	<include file="struts/schedule.xml"></include>
+	<include file="struts/friends.xml"></include>
+	<include file="struts/login.xml"></include>
+	<include file="struts/layout.xml"></include> -->
+	
+	<include file="struts/demo.xml"></include>
+	
+</struts>

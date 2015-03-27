@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-3-9 20:56:37 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.gx.model.Schedule" table="SCHEDULE">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="date" type="java.util.Date">
+            <column name="DATE" />
+        </property>
+        <property name="thing" type="java.lang.String">
+            <column name="THING" />
+        </property>
+        <many-to-one name="user" class="com.gx.model.User" fetch="join">
+            <column name="USERID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="loginPkg" namespace="/" extends="checkIsLogin-default">
+		<!-- http://localhost:8080/manningSampleApp/packageNamespace/userAction_list -->
+		<!-- 普通用户管理 -->
+		<action name="loginAndLogoutAction_*" class="loginAndLogoutAction" method="{1}">
+		
+			<result name="input">/{1}.jsp
+			</result>
+			<result name="toLogin" type="redirectAction">loginAndLogoutAction_login
+			</result>
+			<result name="success">/WEB-INF/jsp/index.jsp
+			</result>
+		</action>
+	
+
+	</package>
+
+</struts>

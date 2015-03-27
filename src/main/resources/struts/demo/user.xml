@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="userPkg" namespace="/user" extends="checkIsLogin-default">
+		<!-- http://localhost:8080/manningSampleApp/packageNamespace/userAction_list -->
+		<!-- 普通用户管理 -->
+		<action name="userAction_*" class="userAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/user/list.jsp
+			</result>
+			<result name="self">/WEB-INF/jsp/user/self.jsp
+			</result>
+			<result name="editPasswordUI">/WEB-INF/jsp/user/editPassword.jsp
+			</result>
+			<result name="input">/WEB-INF/jsp/user/editPassword.jsp
+			</result>
+			<result name="saveUI">/WEB-INF/jsp/user/saveUI.jsp
+			</result>
+			<result name="toList" type="redirectAction">userAction_list</result>
+			<result name="toSelf" type="redirectAction">userAction_self</result>
+		</action>
+
+<!-- 
+		企业用户管理
+		<action name="enterprise_action_*" class="enterprise_action"
+			method="{1}">
+
+			<result name="list">/WEB-INF/admin/users_manager/user_enterprise_list.jsp
+			</result>
+			<result name="firstSaveUI">/WEB-INF/admin/users_manager/user_enterprise_firstSaveUI.jsp
+			</result>
+			<result name="saveUI">/WEB-INF/admin/users_manager/user_enterprise_saveUI.jsp
+			</result>
+			<result name="toList" type="redirectAction">enterprise_action_list</result>
+			<result name="viewUI">/WEB-INF/admin/users_manager/user_enterprise_viewUI.jsp
+			</result>
+
+			<interceptor-ref name="userLoginCheckStack">
+				限制单个文件上传大小 1M
+				<param name="fileUpload.maximumSize">10000000</param>
+				限制文件扩展名
+				<param name="fileUpload.allowedExtensions">.jpg,.png,.tmp</param>
+				限制文件的内容类型
+				<param name="fileUpload.allowedTypes">image/jpg,image/jpeg,image/pjpeg,image/png,image/*</param>
+				打印消息
+			</interceptor-ref>
+		</action>
+
+		版权商用户管理
+		<action name="copyright_action_*" class="copyright_action"
+			method="{1}">		
+
+			<result name="list">/WEB-INF/admin/users_manager/user_copyright_list.jsp
+			</result>
+			<result name="firstSaveUI">/WEB-INF/admin/users_manager/user_copyright_firstSaveUI.jsp
+			</result>
+			<result name="saveUI">/WEB-INF/admin/users_manager/user_copyright_saveUI.jsp
+			</result>
+			<result name="toList" type="redirectAction">copyright_action_list</result>
+
+			<result name="viewUI">/WEB-INF/admin/users_manager/user_copyright_viewUI.jsp
+			</result>
+
+			<interceptor-ref name="userLoginCheckStack">
+				限制单个文件上传大小 1M
+				<param name="fileUpload.maximumSize">10000000</param>
+				限制文件扩展名
+				<param name="fileUpload.allowedExtensions">.jpg,.png,.tmp</param>
+				限制文件的内容类型
+				<param name="fileUpload.allowedTypes">image/jpg,image/jpeg,image/pjpeg,image/png,image/*</param>
+				打印消息
+			</interceptor-ref>
+		</action>
+
+		代理商用户管理
+		<action name="agent_action_*" class="agent_action" method="{1}">
+			<result name="list">/WEB-INF/admin/users_manager/user_agent_list.jsp
+			</result>
+			<result name="firstSaveUI">/WEB-INF/admin/users_manager/user_agent_firstSaveUI.jsp
+			</result>
+			<result name="saveUI">/WEB-INF/admin/users_manager/user_agent_saveUI.jsp
+			</result>
+			<result name="toList" type="redirectAction">agent_action_list</result>
+
+			<result name="viewUI">/WEB-INF/admin/users_manager/user_agent_viewUI.jsp </result>
+			
+			/agent
+			<result name="toMain" type="redirectAction">
+				<param name="actionName">agent_toBackStage</param>
+				<param name="namespace">/agent</param>
+			</result>
+			
+			<interceptor-ref name="userLoginCheckStack">
+				限制单个文件上传大小 1M
+				<param name="fileUpload.maximumSize">10000000</param>
+				限制文件扩展名
+				<param name="fileUpload.allowedExtensions">.jpg,.png,.tmp</param>
+				限制文件的内容类型
+				<param name="fileUpload.allowedTypes">image/jpg,image/jpeg,image/pjpeg,image/png,image/*</param>
+				打印消息
+			</interceptor-ref>
+		</action>
+
+		管理员用户管理
+		<action name="admin_action_*" class="admin_action" method="{1}">
+			<result name="list">/WEB-INF/admin/users_manager/user_admin_list.jsp
+			</result>
+			<result name="saveUI">/WEB-INF/admin/users_manager/user_admin_saveUI.jsp
+			</result>
+			<result name="toList" type="redirectAction">admin_action_list</result>
+		</action> -->
+	
+
+	</package>
+
+</struts>

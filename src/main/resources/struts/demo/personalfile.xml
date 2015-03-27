@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="personalFilePkg" namespace="/personalFile" extends="checkIsLogin-default">
+		<!-- http://localhost:8080/manningSampleApp/packageNamespace/personalFileAction_list -->
+		<!-- 普通用户管理 -->
+		<action name="personalFileAction_*" class="personalFileAction" method="{1}">
+			
+			<result name="list">/WEB-INF/jsp/personalFile/list.jsp
+			</result>
+			<result name="saveUI">/WEB-INF/jsp/personalFile/saveUI.jsp
+			</result>
+			<result name="toList" type="redirectAction">personalFileAction_list</result>
+			
+			<!-- 资源下载 -->
+	 		<result name="download" type="stream"> 
+	 			
+	 			<!-- 文件类型 -->
+		 		<param name="contentType">
+		 			${downloadContentType}
+		 		</param>
+		 		<!-- 得到输入流-->
+				<param name="inputName">downloadStream</param>
+				<!-- 下载显示的文件名-->
+				<param name="contentDisposition">attachment;filename="${downloadFileName}"</param>
+				<!-- 下载缓冲区，字节-->
+				<param name="bufferSize">1024</param>
+	 		</result>
+	 		
+	 		<!-- <interceptor-ref name="defaultStack">
+		 			限制单个文件上传大小 ，字节为单位，这里好像不起作用
+		 			<param name="fileUpload.maximumSize">1024*1024*64</param>
+		 			限制文件扩展名 
+		 			<param name="fileUpload.allowedExtensions"></param>
+		 			限制文件的内容类型 
+		 			<param name="fileUpload.allowedTypes">
+		 				 application/octet-stream, application/zip,application/x-zip-compressed,
+		 				 application/x-rar-compressed,application/octet-stream,application/x-rar-compressed
+		 			</param>
+		 			打印消息
+		 	</interceptor-ref> -->
+		</action>
+		
+	</package>
+
+</struts>
